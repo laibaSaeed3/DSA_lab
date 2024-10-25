@@ -1,0 +1,90 @@
+#include<iostream>
+using namespace std;
+const int size=6;
+class Queue {
+private:
+int arr[size], front, rear;
+     
+public:
+Queue(){
+front = -1;
+rear = -1;
+    }
+bool isfull(){
+if(front == 0 && rear == size - 1)
+return true;
+else return false;
+        
+}
+bool isempty(){
+if(front == -1) return true;
+else return false;
+}
+
+void enQueue(int value){    
+if(isfull()){
+cout << endl<< "Queue is full!!";
+        }
+ else {
+if(front == -1) front = 0;
+rear++;
+arr[rear] = value;
+cout << value << " ";
+        }
+    }
+ 
+    
+int deQueue(){
+int value;
+if(isempty()){
+cout << "Queue is empty!!" << endl;  } 
+else {
+ value = arr[front]; 
+if(front >= rear){     
+front = -1;
+rear = -1;
+            } 
+else 
+front++;            
+return(value);
+        }
+    }
+    void displayQueue(){ 
+
+if(isempty()) {
+cout << "Queue is Empty" << endl;
+        }
+else {
+
+cout <<endl<< "Queue elements : "<<endl;
+for(int i=front; i<=rear; i++)
+cout << arr[i] <<endl;
+
+        }
+    }
+
+};
+
+ int main()
+{
+    Queue q;
+         
+ 
+cout<<"Queue created:"<<endl; 
+q.enQueue(10);
+q.enQueue(20); 
+q.enQueue(30); 
+q.enQueue(40);
+q.enQueue(50); 
+q.enQueue(60);
+     
+    
+q.deQueue();
+     
+q.deQueue() ;   
+q.displayQueue();
+     
+return 0;
+}
+   
+    
